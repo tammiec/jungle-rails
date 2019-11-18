@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
     it 'should ignore white spaces' do
       user = User.new(name: 'a', email: 'a@a.com', password: 'abcdef', password_confirmation: 'abcdef')
       user.save!
-      expect(User.authenticate_with_credentials('   a@a.com', 'abcdef')).to eq(user)
+      expect(User.authenticate_with_credentials('   a@a.com   ', 'abcdef')).to eq(user)
     end
 
     it 'should not be case-sensitive' do
