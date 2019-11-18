@@ -37,7 +37,10 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
-    it 'is not valid if password and password_confirmation do not match'
+    it 'is not valid if password and password_confirmation do not match' do
+      user = User.new(name: 'a', email: 'a@a.com', password: 'abc', password_confirmation: 'ABC')
+      expect(user).to_not be_valid
+    end
 
   end
 end
