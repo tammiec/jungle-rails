@@ -27,7 +27,10 @@ RSpec.describe User, type: :model do
       expect(user3).to_not be_valid
     end
 
-    it 'is not valid without a password'
+    it 'is not valid without a password' do
+    user = User.new(name: 'a', email: 'a@a.com', password: nil, password_confirmation: 'abc')
+    expect(user).to_not be_valid
+  end
     it 'is not valid without a password_confirmation'
     it 'is not valid if password and password_confirmation do not match'
 
