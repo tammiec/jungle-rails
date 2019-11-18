@@ -52,8 +52,8 @@ RSpec.describe User, type: :model do
   describe '.authenticate_with_credentials' do
     it 'should return the user if it is authenticated' do
       user = User.new(name: 'a', email: 'a@a.com', password: 'abcdef', password_confirmation: 'abcdef')
-      user.save
-      expect(User.authenticate_with_credentials(user[:email], user[:password])).to be_valid
+      user.save!
+      expect(User.authenticate_with_credentials('a@a.com', 'abcdef')).to eq(user)
     end
   end
 end
