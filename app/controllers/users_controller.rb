@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    if user.save
+    user_auth = user.authenticate_with_credentials(params[:email], params[:password])
+    if user.save && user_auth
       session[:user_id] = user.id
       redirect_to '/', notice: 'Account created successfully'
     else
