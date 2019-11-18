@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ProductDetails", type: :feature, js: true do
+RSpec.feature "AddToCarts", type: :feature, js: true do
     # SETUP
     before :each do
       @category = Category.create! name: 'Apparel'
@@ -20,12 +20,12 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     scenario "They see the product that is clicked" do
       # ACT
       visit root_path
-      find('article.product header', match: :first).click
+      find('form.button_to', match: :first).click
   
       # DEBUG
       save_screenshot
   
       # VERIFY
-      expect(page).to have_css 'article.product-detail'
+      within('nav ul.navbar-right') { expect(page).to have_content ' My Cart (1)' }
     end
 end
