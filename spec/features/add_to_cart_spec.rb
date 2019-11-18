@@ -17,7 +17,7 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
       
     end
     
-    scenario "They see the product that is clicked" do
+    scenario "They see the number of items in the cart has changed" do
       # ACT
       visit root_path
       find('form.button_to', match: :first).click
