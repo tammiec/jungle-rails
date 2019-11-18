@@ -62,7 +62,7 @@ RSpec.describe User, type: :model do
       expect(User.authenticate_with_credentials('a@a.com', 'djfkhsdjk')).to be_nil
     end
 
-    it 'should ignore white spaces' do
+    it 'should ignore trailing white spaces' do
       user = User.new(name: 'a', email: 'a@a.com', password: 'abcdef', password_confirmation: 'abcdef')
       user.save!
       expect(User.authenticate_with_credentials('   a@a.com   ', 'abcdef')).to eq(user)
